@@ -18,5 +18,18 @@ public class Main {
         System.out.println("       | |");
         System.out.println("       | |");
         System.out.println("      /   \\");
+
+        int y = 0;
+
+        while (y < 10){
+            int x=0;
+            while(x < 15){
+                System.out.print("[ ]");
+                x++;
+            }
+            System.out.println();
+            y++;
+        }
+        System.out.println("Der Robotor befindet sich auf:");
     }
 }
