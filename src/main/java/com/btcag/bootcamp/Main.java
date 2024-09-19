@@ -38,6 +38,8 @@ public class Main {
             System.out.println();
             y++;
         }
-        System.out.println("Der Robotor befindet sich auf:");
+        int pos_x = 1;
+        int pos_y = 1;
+        System.out.println("Der Robotor befindet sich auf: x = "+pos_x+ " und y = "+pos_y);
     }
 }
