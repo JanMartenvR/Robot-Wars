@@ -20,9 +20,17 @@ public class Main {
         System.out.println("      /   \\");
 
         int y = 0;
+        int x = 0;
 
         while (y < 10){
-            int x=0;
+            while (x < 15){
+                System.out.print(" "+ x + " ");
+                x++;
+                if (x > 14){
+                    System.out.println();
+                }
+            }
+            x=0;
             while(x < 15){
                 System.out.print("[ ]");
                 x++;
