@@ -38,27 +38,33 @@ public class Main {
         }
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName);
 
-        int y = 0;
-        int x = 0;
+        int y = 1;
+        int x = 1;
+        int pos_x = 3;
+        int pos_y = 7;
 
-        while (y < 10){
-            while (x < 15){
-                System.out.print(" "+ x + " ");
-                x++;
-                if (x > 14){
-                    System.out.println();
+        while (y < 11){
+            x=1;
+            //Ausgeben des Robotors
+            while(y==pos_y){
+                while(x==pos_x){
+                    System.out.print("("+roboName+")");
+                    x++;
+                    break;
                 }
+                break;
             }
-            x=0;
-            while(x < 15){
+            //Ausgeben der Zeilen
+            while(x < 16){
                 System.out.print("[ ]");
                 x++;
             }
+            // Zeilenumbruch
             System.out.println();
             y++;
         }
-        int pos_x = 1;
-        int pos_y = 1;
+
+
         System.out.println("Der Robotor befindet sich auf: x = "+pos_x+ " und y = "+pos_y);
     }
 }
