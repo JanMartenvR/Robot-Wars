@@ -49,6 +49,7 @@ public class Main {
         int pos_x = 15;
         int pos_y = 10;
 
+
         while (y < 11) {
             x = 1;
 
@@ -63,6 +64,7 @@ public class Main {
                         break;
                     }
                     break;
+
                 }
                 System.out.print("[ ]");
                 x++;
