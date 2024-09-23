@@ -19,6 +19,25 @@ public class Main {
         System.out.println("       | |");
         System.out.println("      /   \\");
 
+        System.out.println("Bitte wählen Sie Ihren Roboter aus:");
+        System.out.println("Geben Sie 1 ein für X");
+        System.out.println("Geben Sie 2 ein für #");
+        System.out.println("Geben Sie 3 ein für $");
+
+        int roboAuswahl = 0;
+        while ( roboAuswahl <= 0 || roboAuswahl >= 4){
+            roboAuswahl = scanner.nextInt();
+        }
+        char roboName = 'X';
+        if (roboAuswahl == 2){
+            roboName = '#';
+        } else if (roboAuswahl == 3) {
+            roboName = '$';
+        } else {
+            roboName = 'X';
+        }
+        System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName);
+
         int y = 0;
         int x = 0;
 
