@@ -25,16 +25,22 @@ public class Main {
         System.out.println("Geben Sie 3 ein für $");
 
         int roboAuswahl = 0;
-        while ( roboAuswahl <= 0 || roboAuswahl >= 4){
+        while (roboAuswahl <= 0 || roboAuswahl >= 4) {
             roboAuswahl = scanner.nextInt();
         }
         char roboName = 'X';
-        if (roboAuswahl == 2){
-            roboName = '#';
-        } else if (roboAuswahl == 3) {
-            roboName = '$';
-        } else {
+        int schleifencontrolle = 1;
+        while (roboAuswahl * schleifencontrolle == 1) {
             roboName = 'X';
+            schleifencontrolle = 0;
+        }
+        while (roboAuswahl * schleifencontrolle == 2) {
+            roboName = '#';
+            schleifencontrolle = 0;
+        }
+        while (roboAuswahl * schleifencontrolle == 3) {
+            roboName = '$';
+            schleifencontrolle = 0;
         }
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName);
 
@@ -43,16 +49,16 @@ public class Main {
         int pos_x = 15;
         int pos_y = 10;
 
-        while (y < 11){
-            x=1;
+        while (y < 11) {
+            x = 1;
 
 
             //Ausgeben der Zeilen
-            while(x < 16){
+            while (x < 16) {
                 //Ausgeben des Robotors
-                while(y==pos_y){
-                    while(x==pos_x){
-                        System.out.print("("+roboName+")");
+                while (y == pos_y) {
+                    while (x == pos_x) {
+                        System.out.print("(" + roboName + ")");
                         x++;
                         break;
                     }
@@ -67,6 +73,6 @@ public class Main {
         }
 
 
-        System.out.println("Der Robotor befindet sich auf: x = "+pos_x+ " und y = "+pos_y);
+        System.out.println("Der Robotor befindet sich auf: x = " + pos_x + " und y = " + pos_y);
     }
 }
