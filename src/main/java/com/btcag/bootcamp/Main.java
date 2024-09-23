@@ -40,22 +40,24 @@ public class Main {
 
         int y = 1;
         int x = 1;
-        int pos_x = 3;
-        int pos_y = 7;
+        int pos_x = 15;
+        int pos_y = 10;
 
         while (y < 11){
             x=1;
-            //Ausgeben des Robotors
-            while(y==pos_y){
-                while(x==pos_x){
-                    System.out.print("("+roboName+")");
-                    x++;
-                    break;
-                }
-                break;
-            }
+
+
             //Ausgeben der Zeilen
             while(x < 16){
+                //Ausgeben des Robotors
+                while(y==pos_y){
+                    while(x==pos_x){
+                        System.out.print("("+roboName+")");
+                        x++;
+                        break;
+                    }
+                    break;
+                }
                 System.out.print("[ ]");
                 x++;
             }
