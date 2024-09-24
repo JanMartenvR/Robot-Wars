@@ -28,22 +28,48 @@ public class Main {
         while (roboAuswahl <= 0 || roboAuswahl >= 4) {
             roboAuswahl = scanner.nextInt();
         }
-        char roboName = 'X';
+        String roboName = "X";
         int schleifencontrolle = 1;
         while (roboAuswahl * schleifencontrolle == 1) {
-            roboName = 'X';
+            roboName = "[X]";
             schleifencontrolle = 0;
         }
         while (roboAuswahl * schleifencontrolle == 2) {
-            roboName = '#';
+            roboName = "[#]";
             schleifencontrolle = 0;
         }
         while (roboAuswahl * schleifencontrolle == 3) {
-            roboName = '$';
+            roboName = "[$]";
             schleifencontrolle = 0;
         }
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName);
 
+        int breite = 15;
+        int hoehe = 10;
+        int pos_X = 0;
+        int pos_Y = 0;
+
+        int y = 0;
+        while (y < hoehe){
+            int x = 0;
+            while (x < breite) {
+                String feld = "[ ]";
+                int figur_pos = pos_Y * breite +pos_X;
+                int aktuelle_pos = y * breite + x;
+
+                while (aktuelle_pos == figur_pos) {
+                    feld = roboName;
+                    aktuelle_pos++;
+                }
+
+                System.out.print(feld);
+                x++;
+            }
+            System.out.println();
+            y++;
+        }
+
+/*
         int y = 1;
         int x = 1;
         int pos_x = 15;
@@ -76,5 +102,9 @@ public class Main {
 
 
         System.out.println("Der Robotor befindet sich auf: x = " + pos_x + " und y = " + pos_y);
+
+ */
     }
+
+
 }
