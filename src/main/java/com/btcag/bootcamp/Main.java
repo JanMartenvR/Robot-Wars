@@ -49,12 +49,13 @@ public class Main {
         //Angabe von Position -1
         int pos_X = 14;
         int pos_Y = 9;
+        String feld = "[ ]";
 
         int schleifenzaehler_hoehe = 0;
         while (schleifenzaehler_hoehe < hoehe) {
             int schleifenzaehler_breite = 0;
             while (schleifenzaehler_breite < breite) {
-                String feld = "[ ]";
+                feld = "[ ]";
                 //Berechnung einer Variablen für die Position des Roboters
                 int figur_pos = pos_Y * breite + pos_X;
                 //Berechnung einer Variablen welche die aktuelle Position mitzählt
@@ -73,41 +74,7 @@ public class Main {
             schleifenzaehler_hoehe++;
         }
 
-/*
-        int y = 1;
-        int x = 1;
-        int pos_x = 15;
-        int pos_y = 10;
 
-
-        while (y < 11) {
-            x = 1;
-
-
-            //Ausgeben der Zeilen
-            while (x < 16) {
-                //Ausgeben des Robotors
-                while (y == pos_y) {
-                    while (x == pos_x) {
-                        System.out.print("(" + roboName + ")");
-                        x++;
-                        break;
-                    }
-                    break;
-
-                }
-                System.out.print("[ ]");
-                x++;
-            }
-            // Zeilenumbruch
-            System.out.println();
-            y++;
-        }
-
-
-        System.out.println("Der Robotor befindet sich auf: x = " + pos_x + " und y = " + pos_y);
-
- */
     }
 
 
