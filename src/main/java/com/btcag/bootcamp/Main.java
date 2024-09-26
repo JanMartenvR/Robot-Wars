@@ -46,35 +46,23 @@ public class Main {
 
         int breite = 15;
         int hoehe = 10;
-        //Angabe von Position -1
         int pos_X = 14;
         int pos_Y = 9;
-        String feld = "[ ]";
+        printBoard(breite, hoehe, pos_X, pos_Y, roboName);
 
-        int schleifenzaehler_hoehe = 0;
-        while (schleifenzaehler_hoehe < hoehe) {
-            int schleifenzaehler_breite = 0;
-            while (schleifenzaehler_breite < breite) {
-                feld = "[ ]";
-                //Berechnung einer Variablen für die Position des Roboters
-                int figur_pos = pos_Y * breite + pos_X;
-                //Berechnung einer Variablen welche die aktuelle Position mitzählt
-                int aktuelle_pos = schleifenzaehler_hoehe * breite + schleifenzaehler_breite;
+    }
+    public static void printBoard(int breite, int hoehe, int pos_X, int pos_Y, String roboName) {
 
-                //Wenn die Schleife an der Position des Robotors angekommen ist, wird das zudruckende Objekt mit dem Robotor ersetzt.
-                while (aktuelle_pos == figur_pos) {
-                    feld = roboName;
-                    aktuelle_pos++;
+        for (int y = 0; y < hoehe; y++) {
+            for (int x = 0; x < breite; x++) {
+                if (x == pos_X && y == pos_Y) {
+                    System.out.print(roboName);
+                } else {
+                    System.out.print("[ ]");
                 }
-
-                System.out.print(feld);
-                schleifenzaehler_breite++;
             }
             System.out.println();
-            schleifenzaehler_hoehe++;
         }
-
-
     }
 
 
