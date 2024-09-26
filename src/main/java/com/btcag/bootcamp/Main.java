@@ -53,14 +53,11 @@ public class Main {
     }
     public static String roboName (int roboAuswahl) {
         if (roboAuswahl == 1) {
-            String roboName = "[X]";
-            return roboName;
+            return "[X]";
         } else if (roboAuswahl == 2) {
-            String roboName = "[#]";
-            return roboName;
+            return "[#]";
         } else if (roboAuswahl == 3) {
-            String roboName = "[$]";
-            return roboName;
+            return "[$]";
         }
         return "";
 
