@@ -28,27 +28,14 @@ public class Main {
         while (roboAuswahl <= 0 || roboAuswahl >= 4) {
             roboAuswahl = scanner.nextInt();
         }
-        String roboName = "X";
-        int schleifencontrolle = 1;
-        while (roboAuswahl * schleifencontrolle == 1) {
-            roboName = "[X]";
-            schleifencontrolle = 0;
-        }
-        while (roboAuswahl * schleifencontrolle == 2) {
-            roboName = "[#]";
-            schleifencontrolle = 0;
-        }
-        while (roboAuswahl * schleifencontrolle == 3) {
-            roboName = "[$]";
-            schleifencontrolle = 0;
-        }
-        System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName);
+
+        System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName(roboAuswahl));
 
         int breite = 15;
         int hoehe = 10;
         int pos_X = 14;
         int pos_Y = 9;
-        printBoard(breite, hoehe, pos_X, pos_Y, roboName);
+        printBoard(breite, hoehe, pos_X, pos_Y, roboName(roboAuswahl));
 
     }
     public static void printBoard(int breite, int hoehe, int pos_X, int pos_Y, String roboName) {
@@ -63,6 +50,20 @@ public class Main {
             }
             System.out.println();
         }
+    }
+    public static String roboName (int roboAuswahl) {
+        if (roboAuswahl == 1) {
+            String roboName = "[X]";
+            return roboName;
+        } else if (roboAuswahl == 2) {
+            String roboName = "[#]";
+            return roboName;
+        } else if (roboAuswahl == 3) {
+            String roboName = "[$]";
+            return roboName;
+        }
+        return "";
+
     }
 
 
