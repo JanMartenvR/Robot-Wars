@@ -63,10 +63,9 @@ public class Main {
             return "[X]";
         } else if (roboAuswahl == 2) {
             return "[#]";
-        } else if (roboAuswahl == 3) {
+        } else {
             return "[$]";
         }
-        return "";
 
     }
 
