@@ -1,5 +1,6 @@
 package com.btcag.bootcamp;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -11,11 +12,34 @@ public class Main {
 
 
         int[][] board = new int[10][15];
-        int pos_X = 14;
-        int pos_Y = 9;
-
+        int pos_X = 0;
+        int pos_Y = 0;
         printBoard(board, pos_X, pos_Y, roboName);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
+        String move = scanner.next();
+        move = move.toLowerCase(Locale.ROOT);
+        if (validTurn(move, board)) {
+            //do something
+        } else {
+            System.out.println("Input ungültig.");
+        }
 
+    }
+    public static boolean validTurn(String move, int[][] board) {
+        if (move == "w" && board[1][1] != 0 ) {
+            return true;
+        } else if (move == "a" && board[1][1] != 0) {
+            return true;
+        } else if (move == "s" && board[1][1] != 0) {
+            return true;
+        } else if (move == "d" && board[1][1] != 0) {
+            return true;
+        } else if (move == "x") {
+            return true;
+        } else {
+            return false;
+        }
     }
     public static void intro () {
         Scanner scanner = new Scanner(System.in);
