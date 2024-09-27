@@ -5,18 +5,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         intro();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Bitte wählen Sie Ihren Roboter aus:");
-        System.out.println("Geben Sie 1 ein für X");
-        System.out.println("Geben Sie 2 ein für #");
-        System.out.println("Geben Sie 3 ein für $");
 
-        int roboAuswahl = 0;
-        while (roboAuswahl <= 0 || roboAuswahl >= 4) {
-            roboAuswahl = scanner.nextInt();
-        }
-
-        System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName(roboAuswahl));
+        String roboName = roboName();
+        System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName);
 
 
         int breite = 15;
@@ -24,7 +15,7 @@ public class Main {
         int pos_X = 14;
         int pos_Y = 9;
 
-        printBoard(breite, hoehe, pos_X, pos_Y, roboName(roboAuswahl));
+        printBoard(breite, hoehe, pos_X, pos_Y, roboName);
 
     }
     public static void intro () {
@@ -56,7 +47,17 @@ public class Main {
             System.out.println();
         }
     }
-    public static String roboName (int roboAuswahl) {
+    public static String roboName () {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Bitte wählen Sie Ihren Roboter aus:");
+        System.out.println("Geben Sie 1 ein für X");
+        System.out.println("Geben Sie 2 ein für #");
+        System.out.println("Geben Sie 3 ein für $");
+
+        int roboAuswahl = 0;
+        while (roboAuswahl <= 0 || roboAuswahl >= 4) {
+            roboAuswahl = scanner.nextInt();
+        }
 
         if (roboAuswahl == 1) {
             return "[X]";
