@@ -27,7 +27,7 @@ public class Main {
         System.out.println("       \\_/");
         System.out.println("     .-'-'-.");
         System.out.println("    /       \\");
-        System.out.println("   |  |   |  |      " + "Wilkommen bei Robo-Wars " + name + "!");
+        System.out.println("   |  |   |  |      " + "Willkommen bei Robo-Wars " + name + "!");
         System.out.println("   |  |   |  |");
         System.out.println("    \\_______/");
         System.out.println("       | |");
