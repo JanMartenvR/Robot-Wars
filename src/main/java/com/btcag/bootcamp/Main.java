@@ -10,12 +10,11 @@ public class Main {
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName);
 
 
-        int breite = 15;
-        int hoehe = 10;
+        int[][] board = new int[10][15];
         int pos_X = 14;
         int pos_Y = 9;
 
-        printBoard(breite, hoehe, pos_X, pos_Y, roboName);
+        printBoard(board, pos_X, pos_Y, roboName);
 
     }
     public static void intro () {
@@ -34,10 +33,9 @@ public class Main {
         System.out.println("       | |");
         System.out.println("      /   \\");
     }
-    public static void printBoard(int breite, int hoehe, int pos_X, int pos_Y, String roboName) {
-
-        for (int y = 0; y < hoehe; y++) {
-            for (int x = 0; x < breite; x++) {
+    public static void printBoard(int[][]board, int pos_X, int pos_Y, String roboName) {
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
                 if (x == pos_X && y == pos_Y) {
                     System.out.print(roboName);
                 } else {
