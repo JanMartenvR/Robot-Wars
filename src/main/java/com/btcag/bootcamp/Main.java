@@ -1,6 +1,7 @@
 package com.btcag.bootcamp;
 
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -19,23 +20,35 @@ public class Main {
         System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
         String move = scanner.next();
         move = move.toLowerCase(Locale.ROOT);
-        if (validTurn(move, board)) {
-            //do something
+        if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "w")) {
+            pos_Y++;
+            printBoard(board, pos_X, pos_Y, roboName);
+        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "a")) {
+            pos_X--;
+            printBoard(board, pos_X, pos_Y, roboName);
+        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "s")) {
+            pos_Y--;
+            printBoard(board, pos_X, pos_Y, roboName);
+        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "d")) {
+            pos_X++;
+            printBoard(board, pos_X, pos_Y, roboName);
+        } else if (Objects.equals(move, "x")) {
+            printBoard(board, pos_X, pos_Y, roboName);
         } else {
             System.out.println("Input ungültig.");
         }
 
     }
-    public static boolean validTurn(String move, int[][] board) {
-        if (move == "w" && board[1][1] != 0 ) {
+    public static boolean validTurn(String move, int pos_X, int pos_Y) {
+        if (Objects.equals(move, "w") && pos_Y + 1 < 9) {
             return true;
-        } else if (move == "a" && board[1][1] != 0) {
+        } else if (Objects.equals(move, "a") && pos_X - 1 > 0) {
             return true;
-        } else if (move == "s" && board[1][1] != 0) {
+        } else if (Objects.equals(move, "s") && pos_Y - 1 > 0) {
             return true;
-        } else if (move == "d" && board[1][1] != 0) {
+        } else if (Objects.equals(move, "d") && pos_X + 1 < 14) {
             return true;
-        } else if (move == "x") {
+        } else if (Objects.equals(move, "x")) {
             return true;
         } else {
             return false;
