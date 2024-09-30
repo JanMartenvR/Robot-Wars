@@ -2,6 +2,7 @@ package com.btcag.bootcamp;
 
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -78,10 +79,27 @@ public class Main {
         System.out.println("       | |");
         System.out.println("      /   \\");
     }
+    public static Boolean kampf(String roboName, String enemyName) {
+        Random random = new Random();
+        int rnd = random.nextInt(1);
+        if (rnd == 1) {
+            System.out.print(roboName);
+            return true;
+        } else {
+            System.out.print(enemyName);
+            return false;
+        }
+    }
     public static void printBoard(int[][]board, int pos_X, int pos_Y, String roboName, int enemy_X, int enemy_Y, String enemyName) {
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
-                if (x == pos_X && y == pos_Y) {
+                if (pos_X == enemy_X && pos_Y == enemy_Y) {
+                    if(kampf(roboName, enemyName)) {
+                        Boolean win = true;
+                    } else {
+                        Boolean win = false;
+                    }
+                } else if (x == pos_X && y == pos_Y) {
                     System.out.print(roboName);
                 } else if (x == enemy_X && y == enemy_Y) {
                     System.out.print(enemyName);
