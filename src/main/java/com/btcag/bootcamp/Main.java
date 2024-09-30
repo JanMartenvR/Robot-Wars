@@ -16,9 +16,9 @@ public class Main {
     public static void main(String[] args) {
         intro();
 
-        roboName = roboName();
+        roboName = roboNames();
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName);
-
+        boardInit();
         printBoard();
         while (true) {
             turn();
@@ -37,20 +37,23 @@ public class Main {
         move = move.toLowerCase(Locale.ROOT);
         if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "s")) {
             pos_Y++;
-            printBoard();
         } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "a")) {
             pos_X--;
-            printBoard();
         } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "w")) {
             pos_Y--;
-            printBoard();
         } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "d")) {
             pos_X++;
-            printBoard();
         } else if (Objects.equals(move, "x")) {
-            printBoard();
+
         } else {
             System.out.println("Input ungültig.");
+        }
+    }
+    public static void boardInit() {
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
+                board[y][x] = 0;
+            }
         }
     }
     public static boolean validTurn(String move, int pos_X, int pos_Y) {
@@ -91,7 +94,7 @@ public class Main {
             System.out.print(roboName + "gewinnt!");
             return true;
         } else {
-            System.out.print(enemyName);
+            System.out.print(enemyName + "gewinnt!");
             return false;
         }
     }
@@ -99,7 +102,6 @@ public class Main {
 
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
-                if (pos_X == enemy_X && pos_Y == enemy_Y) {
                     if (x == pos_X && y == pos_Y) {
                         System.out.print(roboName);
                     } else if (x == enemy_X && y == enemy_Y) {
@@ -107,11 +109,10 @@ public class Main {
                     } else {
                         System.out.print("[ ]");
                     }
-                } else {
-                    System.out.print("[ ]");
             }
             System.out.println();
         }
+
     }
     public static String roboNames() {
         Scanner scanner = new Scanner(System.in);
