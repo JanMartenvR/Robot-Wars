@@ -27,25 +27,22 @@ public class Main {
             move = move.toLowerCase(Locale.ROOT);
             if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "s")) {
                 pos_Y++;
-                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
+                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
             } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "a")) {
                 pos_X--;
-                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
+                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
             } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "w")) {
                 pos_Y--;
-                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
+                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
             } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "d")) {
                 pos_X++;
-                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
+                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
             } else if (Objects.equals(move, "x")) {
-                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
+                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
             } else {
                 System.out.println("Input ungültig.");
             }
         }
-
-    }
-    public static void turn () {
 
     }
     public static boolean validTurn(String move, int pos_X, int pos_Y) {
@@ -81,7 +78,7 @@ public class Main {
     }
     public static Boolean kampf(String roboName, String enemyName) {
         Random random = new Random();
-        int rnd = random.nextInt(1);
+        int rnd = random.nextInt(2);
         if (rnd == 1) {
             System.out.print(roboName);
             return true;
@@ -90,14 +87,15 @@ public class Main {
             return false;
         }
     }
-    public static void printBoard(int[][]board, int pos_X, int pos_Y, String roboName, int enemy_X, int enemy_Y, String enemyName) {
+    public static String printBoard(int[][]board, int pos_X, int pos_Y, String roboName, int enemy_X, int enemy_Y, String enemyName) {
+        String win = "";
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 if (pos_X == enemy_X && pos_Y == enemy_Y) {
                     if(kampf(roboName, enemyName)) {
-                        Boolean win = true;
+                        win = roboName + " gewinnt!";
                     } else {
-                        Boolean win = false;
+                        win = roboName + " verliert!";
                     }
                 } else if (x == pos_X && y == pos_Y) {
                     System.out.print(roboName);
@@ -109,6 +107,7 @@ public class Main {
             }
             System.out.println();
         }
+        return win;
     }
     public static String roboName () {
         Scanner scanner = new Scanner(System.in);
