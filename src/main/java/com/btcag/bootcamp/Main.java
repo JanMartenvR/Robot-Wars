@@ -16,37 +16,42 @@ public class Main {
         int pos_X = 0;
         int pos_Y = 0;
         printBoard(board, pos_X, pos_Y, roboName);
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
-        String move = scanner.next();
-        move = move.toLowerCase(Locale.ROOT);
-        if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "w")) {
-            pos_Y++;
-            printBoard(board, pos_X, pos_Y, roboName);
-        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "a")) {
-            pos_X--;
-            printBoard(board, pos_X, pos_Y, roboName);
-        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "s")) {
-            pos_Y--;
-            printBoard(board, pos_X, pos_Y, roboName);
-        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "d")) {
-            pos_X++;
-            printBoard(board, pos_X, pos_Y, roboName);
-        } else if (Objects.equals(move, "x")) {
-            printBoard(board, pos_X, pos_Y, roboName);
-        } else {
-            System.out.println("Input ungültig.");
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
+            String move = scanner.next();
+            move = move.toLowerCase(Locale.ROOT);
+            if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "s")) {
+                pos_Y++;
+                printBoard(board, pos_X, pos_Y, roboName);
+            } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "a")) {
+                pos_X--;
+                printBoard(board, pos_X, pos_Y, roboName);
+            } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "w")) {
+                pos_Y--;
+                printBoard(board, pos_X, pos_Y, roboName);
+            } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "d")) {
+                pos_X++;
+                printBoard(board, pos_X, pos_Y, roboName);
+            } else if (Objects.equals(move, "x")) {
+                printBoard(board, pos_X, pos_Y, roboName);
+            } else {
+                System.out.println("Input ungültig.");
+            }
         }
 
     }
+    public static void turn () {
+
+    }
     public static boolean validTurn(String move, int pos_X, int pos_Y) {
-        if (Objects.equals(move, "w") && pos_Y + 1 < 9) {
+        if (Objects.equals(move, "s") && pos_Y + 1 <= 9) {
             return true;
-        } else if (Objects.equals(move, "a") && pos_X - 1 > 0) {
+        } else if (Objects.equals(move, "a") && pos_X - 1 >= 0) {
             return true;
-        } else if (Objects.equals(move, "s") && pos_Y - 1 > 0) {
+        } else if (Objects.equals(move, "w") && pos_Y - 1 >= 0) {
             return true;
-        } else if (Objects.equals(move, "d") && pos_X + 1 < 14) {
+        } else if (Objects.equals(move, "d") && pos_X + 1 <= 14) {
             return true;
         } else if (Objects.equals(move, "x")) {
             return true;
