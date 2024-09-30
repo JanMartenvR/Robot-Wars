@@ -15,7 +15,10 @@ public class Main {
         int[][] board = new int[10][15];
         int pos_X = 0;
         int pos_Y = 0;
-        printBoard(board, pos_X, pos_Y, roboName);
+        int enemy_X = 9;
+        int enemy_Y = 9;
+        String enemyName = "[Z]";
+        printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
@@ -23,18 +26,18 @@ public class Main {
             move = move.toLowerCase(Locale.ROOT);
             if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "s")) {
                 pos_Y++;
-                printBoard(board, pos_X, pos_Y, roboName);
+                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
             } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "a")) {
                 pos_X--;
-                printBoard(board, pos_X, pos_Y, roboName);
+                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
             } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "w")) {
                 pos_Y--;
-                printBoard(board, pos_X, pos_Y, roboName);
+                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
             } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "d")) {
                 pos_X++;
-                printBoard(board, pos_X, pos_Y, roboName);
+                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
             } else if (Objects.equals(move, "x")) {
-                printBoard(board, pos_X, pos_Y, roboName);
+                printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
             } else {
                 System.out.println("Input ungültig.");
             }
@@ -75,11 +78,13 @@ public class Main {
         System.out.println("       | |");
         System.out.println("      /   \\");
     }
-    public static void printBoard(int[][]board, int pos_X, int pos_Y, String roboName) {
+    public static void printBoard(int[][]board, int pos_X, int pos_Y, String roboName, int enemy_X, int enemy_Y, String enemyName) {
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 if (x == pos_X && y == pos_Y) {
                     System.out.print(roboName);
+                } else if (x == enemy_X && y == enemy_Y) {
+                    System.out.print(enemyName);
                 } else {
                     System.out.print("[ ]");
                 }
