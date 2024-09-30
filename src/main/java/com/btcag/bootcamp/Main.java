@@ -22,6 +22,10 @@ public class Main {
         printBoard();
         while (true) {
             turn();
+            if (pos_X == enemy_X && pos_Y == enemy_Y) {
+                kampf();
+                break;
+            }
             printBoard();
         }
 
@@ -80,7 +84,7 @@ public class Main {
         System.out.println("       | |");
         System.out.println("      /   \\");
     }
-    public static Boolean kampf(String enemyName) {
+    public static Boolean kampf() {
         Random random = new Random();
         int rnd = random.nextInt(2);
         if (rnd == 1) {
