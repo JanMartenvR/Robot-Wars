@@ -6,44 +6,48 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    public static String roboName = "";
+    public static String enemyName = "[Z]";
+    public static int pos_X = 0;
+    public static int pos_Y = 0;
+    public static int enemy_X = 9;
+    public static int enemy_Y = 9;
+    public static int[][] board = new int[10][15];
     public static void main(String[] args) {
         intro();
 
-        String roboName = roboName();
+        roboName = roboName();
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + roboName);
 
-
-        int[][] board = new int[10][15];
-        int pos_X = 0;
-        int pos_Y = 0;
-        int enemy_X = 9;
-        int enemy_Y = 9;
-        String enemyName = "[Z]";
-        printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName);
+        printBoard();
         while (true) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
-            String move = scanner.next();
-            move = move.toLowerCase(Locale.ROOT);
-            if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "s")) {
-                pos_Y++;
-                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
-            } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "a")) {
-                pos_X--;
-                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
-            } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "w")) {
-                pos_Y--;
-                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
-            } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "d")) {
-                pos_X++;
-                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
-            } else if (Objects.equals(move, "x")) {
-                System.out.println(printBoard(board, pos_X, pos_Y, roboName, enemy_X, enemy_Y, enemyName));
-            } else {
-                System.out.println("Input ungültig.");
-            }
+            turn();
+            printBoard();
         }
 
+    }
+    public static void turn(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
+        String move = scanner.next();
+        move = move.toLowerCase(Locale.ROOT);
+        if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "s")) {
+            pos_Y++;
+            printBoard();
+        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "a")) {
+            pos_X--;
+            printBoard();
+        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "w")) {
+            pos_Y--;
+            printBoard();
+        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "d")) {
+            pos_X++;
+            printBoard();
+        } else if (Objects.equals(move, "x")) {
+            printBoard();
+        } else {
+            System.out.println("Input ungültig.");
+        }
     }
     public static boolean validTurn(String move, int pos_X, int pos_Y) {
         if (Objects.equals(move, "s") && pos_Y + 1 <= 9) {
@@ -76,40 +80,36 @@ public class Main {
         System.out.println("       | |");
         System.out.println("      /   \\");
     }
-    public static Boolean kampf(String roboName, String enemyName) {
+    public static Boolean kampf(String enemyName) {
         Random random = new Random();
         int rnd = random.nextInt(2);
         if (rnd == 1) {
-            System.out.print(roboName);
+            System.out.print(roboName + "gewinnt!");
             return true;
         } else {
             System.out.print(enemyName);
             return false;
         }
     }
-    public static String printBoard(int[][]board, int pos_X, int pos_Y, String roboName, int enemy_X, int enemy_Y, String enemyName) {
-        String win = "";
+    public static void printBoard() {
+
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 if (pos_X == enemy_X && pos_Y == enemy_Y) {
-                    if(kampf(roboName, enemyName)) {
-                        win = roboName + " gewinnt!";
+                    if (x == pos_X && y == pos_Y) {
+                        System.out.print(roboName);
+                    } else if (x == enemy_X && y == enemy_Y) {
+                        System.out.print(enemyName);
                     } else {
-                        win = roboName + " verliert!";
+                        System.out.print("[ ]");
                     }
-                } else if (x == pos_X && y == pos_Y) {
-                    System.out.print(roboName);
-                } else if (x == enemy_X && y == enemy_Y) {
-                    System.out.print(enemyName);
                 } else {
                     System.out.print("[ ]");
-                }
             }
             System.out.println();
         }
-        return win;
     }
-    public static String roboName () {
+    public static String roboNames() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte wählen Sie Ihren Roboter aus:");
         System.out.println("Geben Sie 1 ein für X");
