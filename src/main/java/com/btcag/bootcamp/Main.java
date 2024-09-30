@@ -13,6 +13,7 @@ public class Main {
     public static int enemy_X = 9;
     public static int enemy_Y = 9;
     public static int[][] board = new int[10][15];
+
     public static void main(String[] args) {
         intro();
 
@@ -30,7 +31,8 @@ public class Main {
         }
 
     }
-    public static void turn(){
+
+    public static void turn() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
         String move = scanner.next();
@@ -49,6 +51,7 @@ public class Main {
             System.out.println("Input ungültig.");
         }
     }
+
     public static void boardInit() {
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
@@ -56,6 +59,7 @@ public class Main {
             }
         }
     }
+
     public static boolean validTurn(String move, int pos_X, int pos_Y) {
         if (Objects.equals(move, "s") && pos_Y + 1 <= 9) {
             return true;
@@ -71,7 +75,8 @@ public class Main {
             return false;
         }
     }
-    public static void intro () {
+
+    public static void intro() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie Ihren Namen ein:");
         String name = scanner.nextLine();
@@ -87,33 +92,34 @@ public class Main {
         System.out.println("       | |");
         System.out.println("      /   \\");
     }
-    public static Boolean kampf() {
+
+    public static void kampf() {
         Random random = new Random();
         int rnd = random.nextInt(2);
         if (rnd == 1) {
-            System.out.print(roboName + "gewinnt!");
-            return true;
+            System.out.print(roboName + " gewinnt!");
         } else {
-            System.out.print(enemyName + "gewinnt!");
-            return false;
+            System.out.print(enemyName + " gewinnt!");
         }
     }
+
     public static void printBoard() {
 
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
-                    if (x == pos_X && y == pos_Y) {
-                        System.out.print(roboName);
-                    } else if (x == enemy_X && y == enemy_Y) {
-                        System.out.print(enemyName);
-                    } else {
-                        System.out.print("[ ]");
-                    }
+                if (x == pos_X && y == pos_Y) {
+                    System.out.print(roboName);
+                } else if (x == enemy_X && y == enemy_Y) {
+                    System.out.print(enemyName);
+                } else {
+                    System.out.print("[ ]");
+                }
             }
             System.out.println();
         }
 
     }
+
     public static String roboNames() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte wählen Sie Ihren Roboter aus:");
