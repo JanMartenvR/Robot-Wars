@@ -6,27 +6,24 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Start {
-    public static String enemyName = "[Z]";
-    public static int enemy_X = 9;
-    public static int enemy_Y = 9;
     public static int[][] board = new int[10][15];
 
     public static void main(String[] args) {
         intro();
         Roboter spieler = new Roboter("x",1,1,1,1,1,1,1,1,1,1);
-
+        Roboter gegner = new Roboter("[Z]",1,9,9,1,1,1,1,1,1,1);
         spieler.setRobotName(roboNames());
 
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());
         boardInit();
-        printBoard(spieler);
+        printBoard(spieler, gegner);
         while (true) {
             turn(spieler);
-            if (spieler.getX() == enemy_X && spieler.getY() == enemy_Y) {
-                kampf(spieler);
+            if (spieler.getX() == gegner.getX() && spieler.getY() == gegner.getY()) {
+                kampf(spieler, gegner);
                 break;
             }
-            printBoard(spieler);
+            printBoard(spieler, gegner);
         }
 
     }
@@ -95,24 +92,24 @@ public class Start {
         System.out.println("      /   \\");
     }
 
-    public static void kampf(Roboter spieler) {
+    public static void kampf(Roboter spieler, Roboter gegner) {
         Random random = new Random();
         int rnd = random.nextInt(2);
         if (rnd == 1) {
             System.out.print(spieler.getRobotName() + " gewinnt!");
         } else {
-            System.out.print(enemyName + " gewinnt!");
+            System.out.print(gegner.getRobotName() + " gewinnt!");
         }
     }
 
-    public static void printBoard(Roboter spieler) {
+    public static void printBoard(Roboter spieler, Roboter gegner) {
 
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 if (x == spieler.getX() && y == spieler.getY()) {
                     System.out.print(spieler.getRobotName());
-                } else if (x == enemy_X && y == enemy_Y) {
-                    System.out.print(enemyName);
+                } else if (x == gegner.getX() && y == gegner.getY()) {
+                    System.out.print(gegner.getRobotName());
                 } else {
                     System.out.print("[ ]");
                 }
