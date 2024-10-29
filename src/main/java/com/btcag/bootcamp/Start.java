@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class Start {
     public static String enemyName = "[Z]";
     public static int pos_X = 0;
     public static int pos_Y = 0;
@@ -15,18 +15,20 @@ public class Main {
 
     public static void main(String[] args) {
         intro();
+        Roboter spieler = new Roboter("x",1,1,1,1,1,1,1,1,1,1);
 
-        Roboter.setRobotName(roboNames());
-        System.out.println("Sie haben folgenden Robotor ausgewählt: " + Roboter.getRobotName());
+        spieler.setRobotName(roboNames());
+
+        System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());
         boardInit();
-        printBoard();
+        printBoard(spieler);
         while (true) {
             turn();
             if (pos_X == enemy_X && pos_Y == enemy_Y) {
-                kampf();
+                kampf(spieler);
                 break;
             }
-            printBoard();
+            printBoard(spieler);
         }
 
     }
@@ -95,22 +97,22 @@ public class Main {
         System.out.println("      /   \\");
     }
 
-    public static void kampf() {
+    public static void kampf(Roboter spieler) {
         Random random = new Random();
         int rnd = random.nextInt(2);
         if (rnd == 1) {
-            System.out.print(Roboter.getRobotName() + " gewinnt!");
+            System.out.print(spieler.getRobotName() + " gewinnt!");
         } else {
             System.out.print(enemyName + " gewinnt!");
         }
     }
 
-    public static void printBoard() {
+    public static void printBoard(Roboter spieler) {
 
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 if (x == pos_X && y == pos_Y) {
-                    System.out.print(Roboter.getRobotName());
+                    System.out.print(spieler.getRobotName());
                 } else if (x == enemy_X && y == enemy_Y) {
                     System.out.print(enemyName);
                 } else {
