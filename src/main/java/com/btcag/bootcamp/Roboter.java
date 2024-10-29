@@ -37,6 +37,14 @@ public class Roboter {
         this.y = y;
     }
 
+    public int getMovementspeed() {
+        return movementspeed;
+    }
+
+    public void setMovementspeed(int movementspeed) {
+        this.movementspeed = movementspeed;
+    }
+
     public Roboter(String robotName, int damageZone, int x, int y, int hp, int energy, int shield, int movementspeed, int damage, int range, int accuracy) {
         this.robotName = robotName;
         this.damageZone = damageZone;
