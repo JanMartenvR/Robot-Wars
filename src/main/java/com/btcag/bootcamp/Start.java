@@ -73,12 +73,14 @@ public class Start {
     }
 
     public static void intro() {
-        String name = "";
+        String name;
         Scanner scanner = new Scanner(System.in);
-        while (name.length() <= 2 || name.length() >= 16) {
+        do {
             System.out.print("Bitte gebe einen Namen ein (3-15 Zeichen):");
             name = scanner.nextLine();
-        }
+        } while (name.length() <= 2 || name.length() >= 16);
+
+
         System.out.println("     ,     ,");
         System.out.println("    [o]---[o]");
         System.out.println("       \\_/");
