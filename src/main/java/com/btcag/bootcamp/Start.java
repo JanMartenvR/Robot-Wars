@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class Start {
     public static String enemyName = "[Z]";
-    public static int pos_X = 0;
-    public static int pos_Y = 0;
     public static int enemy_X = 9;
     public static int enemy_Y = 9;
     public static int[][] board = new int[10][15];
@@ -23,8 +21,8 @@ public class Start {
         boardInit();
         printBoard(spieler);
         while (true) {
-            turn();
-            if (pos_X == enemy_X && pos_Y == enemy_Y) {
+            turn(spieler);
+            if (spieler.getX() == enemy_X && spieler.getY() == enemy_Y) {
                 kampf(spieler);
                 break;
             }
@@ -33,19 +31,19 @@ public class Start {
 
     }
 
-    public static void turn() {
+    public static void turn(Roboter spieler) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
         String move = scanner.next();
         move = move.toLowerCase(Locale.ROOT);
-        if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "s")) {
-            pos_Y++;
-        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "a")) {
-            pos_X--;
-        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "w")) {
-            pos_Y--;
-        } else if (validTurn(move, pos_X, pos_Y) && Objects.equals(move, "d")) {
-            pos_X++;
+        if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "s")) {
+            spieler.setY(spieler.getY()+1);
+        } else if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "a")) {
+            spieler.setX(spieler.getX()-1);
+        } else if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "w")) {
+            spieler.setY(spieler.getY()-1);
+        } else if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "d")) {
+            spieler.setX(spieler.getX()+1);
         } else if (Objects.equals(move, "x")) {
 
         } else {
@@ -111,7 +109,7 @@ public class Start {
 
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
-                if (x == pos_X && y == pos_Y) {
+                if (x == spieler.getX() && y == spieler.getY()) {
                     System.out.print(spieler.getRobotName());
                 } else if (x == enemy_X && y == enemy_Y) {
                     System.out.print(enemyName);
