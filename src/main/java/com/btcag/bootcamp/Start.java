@@ -5,13 +5,15 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
+//Reader Klasse für Nutzereingaben
+
 public class Start {
     public static int[][] board = new int[10][15];
 
     public static void main(String[] args) {
         intro();
-        Roboter spieler = new Roboter("x",1,1,1,1,1,1,1,1,1,1);
-        Roboter gegner = new Roboter("[Z]",1,9,9,1,1,1,1,1,1,1);
+        Roboter spieler = new Roboter("x", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+        Roboter gegner = new Roboter("[Z]", 1, 9, 9, 1, 1, 1, 1, 1, 1, 1);
         spieler.setRobotName(roboNames());
 
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());
@@ -34,13 +36,13 @@ public class Start {
         String move = scanner.next();
         move = move.toLowerCase(Locale.ROOT);
         if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "s")) {
-            spieler.setY(spieler.getY()+ spieler.getMovementspeed());
+            spieler.setY(spieler.getY() + spieler.getMovementspeed());
         } else if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "a")) {
-            spieler.setX(spieler.getX()- spieler.getMovementspeed());
+            spieler.setX(spieler.getX() - spieler.getMovementspeed());
         } else if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "w")) {
-            spieler.setY(spieler.getY()- spieler.getMovementspeed());
+            spieler.setY(spieler.getY() - spieler.getMovementspeed());
         } else if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "d")) {
-            spieler.setX(spieler.getX()+ spieler.getMovementspeed());
+            spieler.setX(spieler.getX() + spieler.getMovementspeed());
         } else if (Objects.equals(move, "x")) {
 
         } else {

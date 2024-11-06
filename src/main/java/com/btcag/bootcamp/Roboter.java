@@ -4,6 +4,7 @@ public class Roboter {
     private String robotName;
     private int x;
     private int y;
+    private Koordinaten coords;
     private int hp;
     private int energy;
     private int shield;
