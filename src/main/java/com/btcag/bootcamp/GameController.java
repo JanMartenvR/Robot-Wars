@@ -6,14 +6,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 //Reader Klasse für Nutzereingaben
+// Board kann aus Feldern bestehen mit eigenschaften, und koordinaten
 
-public class Start {
+public class GameController {
     public static int[][] board = new int[10][15];
 
     public static void main(String[] args) {
         intro();
-        Roboter spieler = new Roboter("x", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-        Roboter gegner = new Roboter("[Z]", 1, 9, 9, 1, 1, 1, 1, 1, 1, 1);
+        Robot spieler = new Robot("x", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+        Robot gegner = new Robot("[Z]", 1, 9, 9, 1, 1, 1, 1, 1, 1, 1);
         spieler.setRobotName(roboNames());
 
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());
@@ -30,7 +31,7 @@ public class Start {
 
     }
 
-    public static void turn(Roboter spieler) {
+    public static void turn(Robot spieler) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
         String move = scanner.next();
@@ -96,7 +97,7 @@ public class Start {
         System.out.println("      /   \\");
     }
 
-    public static void kampf(Roboter spieler, Roboter gegner) {
+    public static void kampf(Robot spieler, Robot gegner) {
         Random random = new Random();
         int rnd = random.nextInt(2);
         if (rnd == 1) {
@@ -106,7 +107,7 @@ public class Start {
         }
     }
 
-    public static void printBoard(Roboter spieler, Roboter gegner) {
+    public static void printBoard(Robot spieler, Robot gegner) {
 
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
