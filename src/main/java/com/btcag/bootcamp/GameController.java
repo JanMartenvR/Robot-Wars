@@ -1,12 +1,9 @@
 package com.btcag.bootcamp;
 
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-//Reader Klasse für Nutzereingaben
+
 // Board kann aus Feldern bestehen mit eigenschaften, und koordinaten
 
 public class GameController {
