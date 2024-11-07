@@ -10,7 +10,7 @@ public class Battlefield {
     public Battlefield(int width, int height) {
         this.width = width;
         this.height = height;
-        this.map = new int[height][width];
+        this.map = new int[width][height];
     }
 
     public int getWidth() {

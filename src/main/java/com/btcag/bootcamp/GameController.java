@@ -26,34 +26,14 @@ public class GameController {
 
         BattlefieldView.display(robots, battlefield);
         while (true) {
-            turn(spieler);
+            MoveRobotView.turn(spieler);
             if (spieler.getX() == gegner.getX() && spieler.getY() == gegner.getY()) {
-                kampf(spieler, gegner);
+                DisplayWinnerView.display(spieler, gegner);
                 break;
             }
-            printBoard(spieler, gegner);
+            BattlefieldView.display(robots, battlefield);
         }
 
-    }
-
-    public static void turn(Robot spieler) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
-        String move = scanner.next();
-        move = move.toLowerCase(Locale.ROOT);
-        if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "s")) {
-            spieler.setY(spieler.getY() + spieler.getMovementspeed());
-        } else if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "a")) {
-            spieler.setX(spieler.getX() - spieler.getMovementspeed());
-        } else if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "w")) {
-            spieler.setY(spieler.getY() - spieler.getMovementspeed());
-        } else if (validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "d")) {
-            spieler.setX(spieler.getX() + spieler.getMovementspeed());
-        } else if (Objects.equals(move, "x")) {
-
-        } else {
-            System.out.println("Input ungültig.");
-        }
     }
 
 }
