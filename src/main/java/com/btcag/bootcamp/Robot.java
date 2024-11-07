@@ -4,7 +4,7 @@ public class Robot {
     private String robotName;
     private int x;
     private int y;
-    private Koordinaten coords;
+    private Coordinates coords;
     private int hp;
     private int energy;
     private int shield;
@@ -14,11 +14,11 @@ public class Robot {
     private int damageZone;
     private int accuracy;
 
-    public Koordinaten getCoords() {
+    public Coordinates getCoords() {
         return coords;
     }
 
-    public void setCoords(Koordinaten coords) {
+    public void setCoords(Coordinates coords) {
         this.coords = coords;
     }
 

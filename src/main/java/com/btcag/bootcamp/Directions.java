@@ -1,6 +1,6 @@
 package com.btcag.bootcamp;
 
-public enum Richtungen {
+public enum Directions {
     NORD,
     NORDOST,
     OST,

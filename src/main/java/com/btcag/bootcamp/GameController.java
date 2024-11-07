@@ -12,7 +12,7 @@ public class GameController {
     public static int[][] board = new int[10][15];
 
     public static void main(String[] args) {
-        intro();
+        IntroScreenView.display();
         Robot spieler = new Robot("x", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
         Robot gegner = new Robot("[Z]", 1, 9, 9, 1, 1, 1, 1, 1, 1, 1);
         spieler.setRobotName(roboNames());
@@ -75,27 +75,7 @@ public class GameController {
         }
     }
 
-    public static void intro() {
-        String name;
-        Scanner scanner = new Scanner(System.in);
-        do {
-            System.out.print("Bitte gebe einen Namen ein (3-15 Zeichen):");
-            name = scanner.nextLine();
-        } while (name.length() <= 2 || name.length() >= 16);
 
-
-        System.out.println("     ,     ,");
-        System.out.println("    [o]---[o]");
-        System.out.println("       \\_/");
-        System.out.println("     .-'-'-.");
-        System.out.println("    /       \\");
-        System.out.println("   |  |   |  |      " + "Willkommen bei Robo-Wars " + name + "!");
-        System.out.println("   |  |   |  |");
-        System.out.println("    \\_______/");
-        System.out.println("       | |");
-        System.out.println("       | |");
-        System.out.println("      /   \\");
-    }
 
     public static void kampf(Robot spieler, Robot gegner) {
         Random random = new Random();

@@ -1,6 +1,6 @@
 package com.btcag.bootcamp;
 
-public class Koordinaten {
+public class Coordinates {
     private int x;
     private int y;
 }

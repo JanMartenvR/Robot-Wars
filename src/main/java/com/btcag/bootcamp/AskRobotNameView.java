@@ -1,4 +1,15 @@
 package com.btcag.bootcamp;
 
+import java.util.Scanner;
+
 public class AskRobotNameView {
+    public static String display() {
+        String name;
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.print("Bitte gebe einen Namen ein (3-15 Zeichen):");
+            name = scanner.nextLine();
+        } while (name.length() <= 2 || name.length() >= 16);
+        return name;
+    }
 }
