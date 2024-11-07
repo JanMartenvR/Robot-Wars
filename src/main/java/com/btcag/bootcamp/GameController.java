@@ -15,10 +15,10 @@ public class GameController {
         IntroScreenView.display();
         Robot spieler = new Robot("x", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
         Robot gegner = new Robot("[Z]", 1, 9, 9, 1, 1, 1, 1, 1, 1, 1);
-        spieler.setRobotName(roboNames());
+        spieler.setRobotName(AskRobotNameView.display());
 
-        System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());
-        boardInit();
+        System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());,
+
         printBoard(spieler, gegner);
         while (true) {
             turn(spieler);
@@ -51,13 +51,6 @@ public class GameController {
         }
     }
 
-    public static void boardInit() {
-        for (int y = 0; y < board.length; y++) {
-            for (int x = 0; x < board[y].length; x++) {
-                board[y][x] = 0;
-            }
-        }
-    }
 
     public static boolean validTurn(String move, int pos_X, int pos_Y) {
         if (Objects.equals(move, "s") && pos_Y + 1 <= 9) {
@@ -104,24 +97,4 @@ public class GameController {
 
     }
 
-    public static String roboNames() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Bitte wählen Sie Ihren Roboter aus:");
-        System.out.println("Geben Sie 1 ein für X");
-        System.out.println("Geben Sie 2 ein für #");
-        System.out.println("Geben Sie 3 ein für $");
-
-        int roboAuswahl = 0;
-        while (roboAuswahl <= 0 || roboAuswahl >= 4) {
-            roboAuswahl = scanner.nextInt();
-        }
-
-        if (roboAuswahl == 1) {
-            return "[X]";
-        } else if (roboAuswahl == 2) {
-            return "[#]";
-        } else {
-            return "[$]";
-        }
-    }
 }

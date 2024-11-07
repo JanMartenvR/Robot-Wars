@@ -4,7 +4,7 @@ public class IntroScreenView {
 
     public static void display() {
 
-        String name = AskRobotNameView.display();
+        String name = AskPlayerNameView.display();
 
         System.out.println("     ,     ,");
         System.out.println("    [o]---[o]");
