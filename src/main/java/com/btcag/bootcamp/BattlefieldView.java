@@ -1,14 +1,15 @@
 package com.btcag.bootcamp;
+import java.util.List;
 
 public class BattlefieldView {
 
-    public static void display(robots Robot[], battlefield) {
-        for (int y = 0; y < board.length; y++) {
-            for (int x = 0; x < board[y].length; x++) {
-                if (x == spieler.getX() && y == spieler.getY()) {
-                    System.out.print(spieler.getRobotName());
-                } else if (x == gegner.getX() && y == gegner.getY()) {
-                    System.out.print(gegner.getRobotName());
+    public static void display(List<Robot> robots, Battlefield battlefield) {
+        for (int y = 0; y < battlefield.getWidth(); y++) {
+            for (int x = 0; x < battlefield.getHeight(); x++) {
+                if (x == robots.get(0).getX() && y == robots.get(0).getY()) {
+                    System.out.print(robots.get(0).getRobotName());
+                } else if (x == robots.get(1).getX() && y == robots.get(1).getY()) {
+                    System.out.print(robots.get(1).getRobotName());
                 } else {
                     System.out.print("[ ]");
                 }

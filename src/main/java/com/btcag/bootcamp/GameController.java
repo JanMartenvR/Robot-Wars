@@ -2,8 +2,9 @@ package com.btcag.bootcamp;
 
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 //Reader Klasse für Nutzereingaben
 // Board kann aus Feldern bestehen mit eigenschaften, und koordinaten
@@ -13,13 +14,17 @@ public class GameController {
 
     public static void main(String[] args) {
         IntroScreenView.display();
+        Battlefield battlefield = new Battlefield(15, 10);
         Robot spieler = new Robot("x", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
         Robot gegner = new Robot("[Z]", 1, 9, 9, 1, 1, 1, 1, 1, 1, 1);
         spieler.setRobotName(AskRobotNameView.display());
+        List<Robot> robots = new ArrayList<>();
+        robots.add(spieler);
+        robots.add(gegner);
 
-        System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());,
+        System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());
 
-        printBoard(spieler, gegner);
+        BattlefieldView.display(robots, battlefield);
         while (true) {
             turn(spieler);
             if (spieler.getX() == gegner.getX() && spieler.getY() == gegner.getY()) {
@@ -49,52 +54,6 @@ public class GameController {
         } else {
             System.out.println("Input ungültig.");
         }
-    }
-
-
-    public static boolean validTurn(String move, int pos_X, int pos_Y) {
-        if (Objects.equals(move, "s") && pos_Y + 1 <= 9) {
-            return true;
-        } else if (Objects.equals(move, "a") && pos_X - 1 >= 0) {
-            return true;
-        } else if (Objects.equals(move, "w") && pos_Y - 1 >= 0) {
-            return true;
-        } else if (Objects.equals(move, "d") && pos_X + 1 <= 14) {
-            return true;
-        } else if (Objects.equals(move, "x")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-
-    public static void kampf(Robot spieler, Robot gegner) {
-        Random random = new Random();
-        int rnd = random.nextInt(2);
-        if (rnd == 1) {
-            System.out.print(spieler.getRobotName() + " gewinnt!");
-        } else {
-            System.out.print(gegner.getRobotName() + " gewinnt!");
-        }
-    }
-
-    public static void printBoard(Robot spieler, Robot gegner) {
-
-        for (int y = 0; y < board.length; y++) {
-            for (int x = 0; x < board[y].length; x++) {
-                if (x == spieler.getX() && y == spieler.getY()) {
-                    System.out.print(spieler.getRobotName());
-                } else if (x == gegner.getX() && y == gegner.getY()) {
-                    System.out.print(gegner.getRobotName());
-                } else {
-                    System.out.print("[ ]");
-                }
-            }
-            System.out.println();
-        }
-
     }
 
 }
