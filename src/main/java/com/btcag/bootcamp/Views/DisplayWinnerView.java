@@ -1,4 +1,6 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.Views;
+
+import com.btcag.bootcamp.Models.Robot;
 
 import java.util.Random;
 

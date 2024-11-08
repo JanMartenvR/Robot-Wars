@@ -1,5 +1,9 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.Controllers;
 
+
+import com.btcag.bootcamp.Models.Battlefield;
+import com.btcag.bootcamp.Models.Robot;
+import com.btcag.bootcamp.Views.*;
 
 import java.util.ArrayList;
 import java.util.List;

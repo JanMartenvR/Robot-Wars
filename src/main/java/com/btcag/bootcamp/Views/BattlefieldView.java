@@ -1,4 +1,7 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.Views;
+import com.btcag.bootcamp.Models.Battlefield;
+import com.btcag.bootcamp.Models.Robot;
+
 import java.util.List;
 
 public class BattlefieldView {

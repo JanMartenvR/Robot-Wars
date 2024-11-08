@@ -1,4 +1,4 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.Models;
 
 public class Robot {
     private String robotName;

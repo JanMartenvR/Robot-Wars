@@ -1,6 +1,4 @@
-package com.btcag.bootcamp;
-
-import java.util.Objects;
+package com.btcag.bootcamp.Models;
 
 public class Battlefield {
     private int width;

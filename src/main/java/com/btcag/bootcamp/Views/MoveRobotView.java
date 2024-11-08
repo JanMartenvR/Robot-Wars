@@ -1,6 +1,8 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.Views;
 
-import java.util.Locale;
+import com.btcag.bootcamp.Models.Battlefield;
+import com.btcag.bootcamp.Models.Robot;
+
 import java.util.Objects;
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.Enums;
 
 public enum Directions {
     NORD(0,-1),
@@ -8,7 +8,8 @@ public enum Directions {
     SUED(0,1),
     SUEDWEST(-1,1),
     WEST(-1,0),
-    NORDWEST(-1,-1);
+    NORDWEST(-1,-1),
+    NOMOVE(0,0);
 
     private final int x;
     private final int y;
