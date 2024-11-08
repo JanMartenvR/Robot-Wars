@@ -45,16 +45,16 @@ public class Battlefield {
         }
     }
 
-    public static boolean validTurn(String move, int pos_X, int pos_Y) {
-        if (Objects.equals(move, "s") && pos_Y + 1 <= 9) {
+    public static boolean validTurn(int move, int pos_X, int pos_Y) {
+        if (move == 2 && pos_Y + 1 <= 9) {
             return true;
-        } else if (Objects.equals(move, "a") && pos_X - 1 >= 0) {
+        } else if (move == 4 && pos_X - 1 >= 0) {
             return true;
-        } else if (Objects.equals(move, "w") && pos_Y - 1 >= 0) {
+        } else if (move == 8 && pos_Y - 1 >= 0) {
             return true;
-        } else if (Objects.equals(move, "d") && pos_X + 1 <= 14) {
+        } else if (move == 6 && pos_X + 1 <= 14) {
             return true;
-        } else if (Objects.equals(move, "x")) {
+        } else if (move == 5) {
             return true;
         } else {
             return false;

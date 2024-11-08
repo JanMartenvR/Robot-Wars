@@ -9,10 +9,9 @@ public class MoveRobotView {
         int moves = 0;
         do {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (WASD) X für position halten:");
-        String move = scanner.next();
-        move = move.toLowerCase(Locale.ROOT);
-        if (Battlefield.validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "s")) {
+        System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (NUMPad) 5 für position halten:");
+        int move = scanner.nextInt();
+        if (Battlefield.validTurn(move, spieler.getX(), spieler.getY()) && move == 2) {
             spieler.setY(spieler.getY() + 1);
             moves += 1;
         } else if (Battlefield.validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "a")) {
@@ -24,6 +23,8 @@ public class MoveRobotView {
         } else if (Battlefield.validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "d")) {
             spieler.setX(spieler.getX() + 1);
             moves += 1;
+        } else if () {
+            
         } else if (Objects.equals(move, "x")) {
             moves += 1;
         } else {
