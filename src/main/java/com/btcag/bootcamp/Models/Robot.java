@@ -13,6 +13,7 @@ public class Robot {
     private int range;
     private int damageZone;
     private int accuracy;
+    private boolean knockedOut;
 
     public Coordinates getCoords() {
         return coords;
@@ -28,6 +29,38 @@ public class Robot {
 
     public void setRobotName(String robotName) {
         this.robotName = robotName;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public boolean isKnockedOut() {
+        return knockedOut;
+    }
+
+    public void setKnockedOut(boolean knockedOut) {
+        this.knockedOut = knockedOut;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     public int getX() {
@@ -54,7 +87,8 @@ public class Robot {
         this.movementspeed = movementspeed;
     }
 
-    public Robot(String robotName, int damageZone, int x, int y, int hp, int energy, int shield, int movementspeed, int damage, int range, int accuracy) {
+
+    public Robot(String robotName, int damageZone, int x, int y, int hp, int energy, int shield, int movementspeed, int damage, int range, int accuracy, boolean knockedOut) {
         this.robotName = robotName;
         this.damageZone = damageZone;
         this.x = x;
@@ -66,14 +100,15 @@ public class Robot {
         this.damage = damage;
         this.range = range;
         this.accuracy = accuracy;
+        this.knockedOut = knockedOut;
     }
 
     public void move() {
 
     }
 
-    public void attack() {
-
+    public static void attack(Robot spieler, Robot gegner) {
+        gegner.setHp(gegner.getHp() - spieler.getDamage());
     }
 
 }

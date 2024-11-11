@@ -1,6 +1,7 @@
 package com.btcag.bootcamp.Service;
 
 import com.btcag.bootcamp.Enums.Directions;
+import com.btcag.bootcamp.Models.Robot;
 
 public class RobotService {
     public static Enum<Directions> fromUserInput(int userChoice){
@@ -16,6 +17,30 @@ public class RobotService {
             case 5 -> Directions.NOMOVE;
             default -> Directions.NOMOVE;
         };
+    }
+    public static boolean inRange(Robot spieler, Robot gegner) {
+        if (spieler.getX() + spieler.getRange() >= gegner.getX()
+        && gegner.getX() >= spieler.getX()
+        && (spieler.getY() + spieler.getRange() >= gegner.getY()
+                && gegner.getY() >= spieler.getY())) {
+            return true;
+        } else if ((spieler.getX() + spieler.getRange() >= gegner.getX()
+                && gegner.getX() >= spieler.getX())
+                && (spieler.getY() - spieler.getRange() <= gegner.getY()
+                && gegner.getY() <= spieler.getY())) {
+            return true;
+        } else if ((spieler.getX() - spieler.getRange() <= gegner.getX()
+                && gegner.getX() <= spieler.getX())
+                && (spieler.getY() + spieler.getRange() >= gegner.getY()
+                && gegner.getY() >= spieler.getY())) {
+            return true;
+        } else if ((spieler.getX() - spieler.getRange() <= gegner.getX()
+                && gegner.getX() <= spieler.getX())
+                && (spieler.getY() - spieler.getRange() <= gegner.getY()
+                && gegner.getY() <= spieler.getY())) {
+            return true;
+        }
+        return false;
     }
 
 }

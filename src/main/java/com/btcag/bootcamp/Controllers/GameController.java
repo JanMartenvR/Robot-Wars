@@ -4,6 +4,7 @@ package com.btcag.bootcamp.Controllers;
 import com.btcag.bootcamp.Enums.Directions;
 import com.btcag.bootcamp.Models.Battlefield;
 import com.btcag.bootcamp.Models.Robot;
+import com.btcag.bootcamp.Service.RobotService;
 import com.btcag.bootcamp.Views.*;
 
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class GameController {
     public static void main(String[] args) {
         IntroScreenView.display();
         Battlefield battlefield = new Battlefield(15, 10);
-        Robot spieler = new Robot("x", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-        Robot gegner = new Robot("[Z]", 1, 9, 9, 1, 1, 1, 1, 1, 1, 1);
+        Robot spieler = new Robot("x", 1, 1, 1, 5, 1, 1, 1, 2, 3, 1, false);
+        Robot gegner = new Robot("[Z]", 1, 9, 9, 7, 1, 1, 1, 1, 1, 1, false);
         spieler.setRobotName(AskRobotNameView.display());
         List<Robot> robots = new ArrayList<>();
         robots.add(spieler);
@@ -28,22 +29,23 @@ public class GameController {
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());
 
         BattlefieldView.display(robots, battlefield);
-        while (true) {
+        while (!spieler.isKnockedOut() || !gegner.isKnockedOut()) {
             int move = 1;
             do {
-                System.out.println();
                 Directions direction = MoveRobotView.turn();
                 if (Battlefield.validTurn(direction, spieler)) {
                     spieler.setX(spieler.getX() + direction.getX());
                     spieler.setY(spieler.getY() + direction.getY());
                     move += 1;
                 } else {
-
+                    System.out.println("Zug ungültig.");
+                    BattlefieldView.display(robots, battlefield);
                 }
             } while (move <= spieler.getMovementspeed());
-            if (spieler.getX() == gegner.getX() && spieler.getY() == gegner.getY()) {
+            if (RobotService.inRange(spieler, gegner)) {
+                Robot.attack(spieler, gegner);
                 DisplayWinnerView.display(spieler, gegner);
-                break;
+
             }
             BattlefieldView.display(robots, battlefield);
         }
