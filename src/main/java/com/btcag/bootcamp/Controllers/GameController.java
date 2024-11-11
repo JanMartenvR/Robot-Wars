@@ -30,6 +30,7 @@ public class GameController {
 
         BattlefieldView.display(robots, battlefield);
         while (!spieler.isKnockedOut() || !gegner.isKnockedOut()) {
+            DisplayWinnerView.display(spieler, gegner);
             int move = 1;
             do {
                 Directions direction = MoveRobotView.turn();
@@ -41,12 +42,11 @@ public class GameController {
                     System.out.println("Zug ungültig.");
                     BattlefieldView.display(robots, battlefield);
                 }
+                if (RobotService.inRange(spieler, gegner)) {
+                    Robot.attack(spieler, gegner);
+                    DisplayWinnerView.display(spieler, gegner);
+                }
             } while (move <= spieler.getMovementspeed());
-            if (RobotService.inRange(spieler, gegner)) {
-                Robot.attack(spieler, gegner);
-                DisplayWinnerView.display(spieler, gegner);
-
-            }
             BattlefieldView.display(robots, battlefield);
         }
 
