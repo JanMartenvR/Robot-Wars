@@ -1,9 +1,10 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.Models;
 
-public class Roboter {
+public class Robot {
     private String robotName;
     private int x;
     private int y;
+    private Coordinates coords;
     private int hp;
     private int energy;
     private int shield;
@@ -12,6 +13,14 @@ public class Roboter {
     private int range;
     private int damageZone;
     private int accuracy;
+
+    public Coordinates getCoords() {
+        return coords;
+    }
+
+    public void setCoords(Coordinates coords) {
+        this.coords = coords;
+    }
 
     public String getRobotName() {
         return this.robotName;
@@ -45,7 +54,7 @@ public class Roboter {
         this.movementspeed = movementspeed;
     }
 
-    public Roboter(String robotName, int damageZone, int x, int y, int hp, int energy, int shield, int movementspeed, int damage, int range, int accuracy) {
+    public Robot(String robotName, int damageZone, int x, int y, int hp, int energy, int shield, int movementspeed, int damage, int range, int accuracy) {
         this.robotName = robotName;
         this.damageZone = damageZone;
         this.x = x;
