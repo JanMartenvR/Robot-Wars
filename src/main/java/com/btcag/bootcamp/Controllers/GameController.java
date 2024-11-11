@@ -1,6 +1,7 @@
 package com.btcag.bootcamp.Controllers;
 
 
+import com.btcag.bootcamp.Enums.Directions;
 import com.btcag.bootcamp.Models.Battlefield;
 import com.btcag.bootcamp.Models.Robot;
 import com.btcag.bootcamp.Views.*;
@@ -28,7 +29,18 @@ public class GameController {
 
         BattlefieldView.display(robots, battlefield);
         while (true) {
-            MoveRobotView.turn(spieler);
+            int move = 1;
+            do {
+                System.out.println();
+                Directions direction = MoveRobotView.turn();
+                if (Battlefield.validTurn(direction, spieler)) {
+                    spieler.setX(spieler.getX() + direction.getX());
+                    spieler.setY(spieler.getY() + direction.getY());
+                    move += 1;
+                } else {
+
+                }
+            } while (move <= spieler.getMovementspeed());
             if (spieler.getX() == gegner.getX() && spieler.getY() == gegner.getY()) {
                 DisplayWinnerView.display(spieler, gegner);
                 break;

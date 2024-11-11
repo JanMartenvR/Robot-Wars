@@ -1,5 +1,7 @@
 package com.btcag.bootcamp.Models;
 
+import com.btcag.bootcamp.Enums.Directions;
+
 public class Battlefield {
     private int width;
     private int height;
@@ -43,16 +45,24 @@ public class Battlefield {
         }
     }
 
-    public static boolean validTurn(int move, int pos_X, int pos_Y) {
-        if (move == 2 && pos_Y + 1 <= 9) {
+    public static boolean validTurn(Directions direction, Robot spieler) {
+        if (direction.equals(Directions.SUED) && spieler.getY() + 1 <= 9) {
             return true;
-        } else if (move == 4 && pos_X - 1 >= 0) {
+        } else if (direction.equals(Directions.WEST) && spieler.getX() - 1 >= 0) {
             return true;
-        } else if (move == 8 && pos_Y - 1 >= 0) {
+        } else if (direction.equals(Directions.NORD) && spieler.getY() - 1 >= 0) {
             return true;
-        } else if (move == 6 && pos_X + 1 <= 14) {
+        } else if (direction.equals(Directions.OST) && spieler.getX() + 1 <= 14) {
             return true;
-        } else if (move == 5) {
+        } else if (direction.equals(Directions.NORDOST) && spieler.getY() - 1 >= 0 && spieler.getX() + 1 <= 14) {
+            return true;
+        } else if (direction.equals(Directions.SUEDOST) && spieler.getX() + 1 <= 14 && spieler.getY() + 1 <= 9) {
+            return true;
+        } else if (direction.equals(Directions.SUEDWEST) && spieler.getX() - 1 >= 0 && spieler.getY() + 1 <= 9) {
+            return true;
+        } else if (direction.equals(Directions.NORDWEST) && spieler.getX() - 1 >= 0 && spieler.getY() - 1 >= 0) {
+            return true;
+        } else if (direction.equals(Directions.NOMOVE)) {
             return true;
         } else {
             return false;

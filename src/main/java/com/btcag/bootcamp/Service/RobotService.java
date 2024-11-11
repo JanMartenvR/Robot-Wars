@@ -3,29 +3,19 @@ package com.btcag.bootcamp.Service;
 import com.btcag.bootcamp.Enums.Directions;
 
 public class RobotService {
-    public Enum<Directions> fromUserInput(int userchoice){
-        switch (userchoice) {
-            case 8 :
-                return Directions.NORD;
-            case 9:
-                return Directions.NORDOST;
-            case 6 :
-                return Directions.OST;
-            case 3:
-                return Directions.SUEDOST;
-            case 2:
-                return Directions.SUED;
-            case 1 :
-                return Directions.SUEDWEST;
-            case 4:
-                return Directions.WEST;
-            case 7:
-                return Directions.NORDWEST;
-            case 5:
-                return Directions.NOMOVE;
-
-        }
-        return Directions.NOMOVE;
+    public static Enum<Directions> fromUserInput(int userChoice){
+        return switch (userChoice) {
+            case 8 -> Directions.NORD;
+            case 9 -> Directions.NORDOST;
+            case 6 -> Directions.OST;
+            case 3 -> Directions.SUEDOST;
+            case 2 -> Directions.SUED;
+            case 1 -> Directions.SUEDWEST;
+            case 4 -> Directions.WEST;
+            case 7 -> Directions.NORDWEST;
+            case 5 -> Directions.NOMOVE;
+            default -> Directions.NOMOVE;
+        };
     }
 
 }

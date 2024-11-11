@@ -1,37 +1,21 @@
 package com.btcag.bootcamp.Views;
 
+import com.btcag.bootcamp.Enums.Directions;
 import com.btcag.bootcamp.Models.Battlefield;
 import com.btcag.bootcamp.Models.Robot;
+import com.btcag.bootcamp.Service.RobotService;
 
 import java.util.Objects;
 import java.util.Scanner;
 
 public class MoveRobotView {
-    public static void turn(Robot spieler) {
-        int moves = 0;
-        do {
+    public static Directions turn() {
         Scanner scanner = new Scanner(System.in);
+        Directions direction;
         System.out.println("Bitte geben Sie an in welche Richtung Sie sich bewegen wollen (NUMPad) 5 für position halten:");
-        int move = scanner.nextInt();
-        if (Battlefield.validTurn(move, spieler.getX(), spieler.getY()) && move == 2) {
-            spieler.setY(spieler.getY() + 1);
-            moves += 1;
-        } else if (Battlefield.validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "a")) {
-            spieler.setX(spieler.getX() - 1);
-            moves += 1;
-        } else if (Battlefield.validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "w")) {
-            spieler.setY(spieler.getY() - 1);
-            moves += 1;
-        } else if (Battlefield.validTurn(move, spieler.getX(), spieler.getY()) && Objects.equals(move, "d")) {
-            spieler.setX(spieler.getX() + 1);
-            moves += 1;
-        } else if () {
-            
-        } else if (Objects.equals(move, "x")) {
-            moves += 1;
-        } else {
-            System.out.println("Input ungültig.");
-        }
-        } while (moves < spieler.getMovementspeed());
+        do {
+        direction = (Directions) RobotService.fromUserInput(scanner.nextInt());
+        } while (null == direction);
+        return direction;
     }
 }
