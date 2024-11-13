@@ -14,12 +14,10 @@ import java.util.List;
 // Board kann aus Feldern bestehen mit eigenschaften, und koordinaten
 
 public class GameController {
-    public static int[][] board = new int[10][15];
-
     public static void main(String[] args) {
         IntroScreenView.display();
         Battlefield battlefield = new Battlefield(15, 10);
-        Robot spieler = new Robot("x", 1, 1, 1, 5, 1, 1, 1, 2, 3, 1, false);
+        Robot spieler = new Robot("x", 1, 1, 1, 5, 1, 1, 3, 2, 3, 1, false);
         Robot gegner = new Robot("[Z]", 1, 9, 9, 7, 1, 1, 1, 1, 1, 1, false);
         spieler.setRobotName(AskRobotNameView.display());
         List<Robot> robots = new ArrayList<>();
@@ -29,10 +27,10 @@ public class GameController {
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());
 
         BattlefieldView.display(robots, battlefield);
-        while (!spieler.isKnockedOut() || !gegner.isKnockedOut()) {
+        while (!spieler.isKnockedOut() && !gegner.isKnockedOut()) {
             DisplayWinnerView.display(spieler, gegner);
             int move = 1;
-            do {
+            while (move <= spieler.getMovementspeed() && !spieler.isKnockedOut() && !gegner.isKnockedOut()) {
                 Directions direction = MoveRobotView.turn();
                 if (Battlefield.validTurn(direction, spieler)) {
                     spieler.setX(spieler.getX() + direction.getX());
@@ -40,14 +38,13 @@ public class GameController {
                     move += 1;
                 } else {
                     System.out.println("Zug ungültig.");
-                    BattlefieldView.display(robots, battlefield);
                 }
+                BattlefieldView.display(robots, battlefield);
                 if (RobotService.inRange(spieler, gegner)) {
                     Robot.attack(spieler, gegner);
                     DisplayWinnerView.display(spieler, gegner);
                 }
-            } while (move <= spieler.getMovementspeed());
-            BattlefieldView.display(robots, battlefield);
+            }
         }
 
     }
