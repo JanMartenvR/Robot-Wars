@@ -17,13 +17,14 @@ public class GameController {
     public static void main(String[] args) {
         IntroScreenView.display();
         Battlefield battlefield = new Battlefield(15, 10);
-        Robot spieler = new Robot("x", 1, 1, 1, 5, 1, 1, 3, 2, 3, 1, false);
+        String robotname = (AskRobotNameView.display());
+
+        Robot spieler = new Robot(robotname, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, false);
         Robot gegner = new Robot("[Z]", 1, 9, 9, 7, 1, 1, 1, 1, 1, 1, false);
-        spieler.setRobotName(AskRobotNameView.display());
+        AskSkillPointView.setStats(spieler);
         List<Robot> robots = new ArrayList<>();
         robots.add(spieler);
         robots.add(gegner);
-
         System.out.println("Sie haben folgenden Robotor ausgewählt: " + spieler.getRobotName());
 
         BattlefieldView.display(robots, battlefield);
