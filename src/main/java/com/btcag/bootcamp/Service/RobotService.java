@@ -14,7 +14,6 @@ public class RobotService {
             case 1 -> Directions.SUEDWEST;
             case 4 -> Directions.WEST;
             case 7 -> Directions.NORDWEST;
-            case 5 -> Directions.NOMOVE;
             default -> Directions.NOMOVE;
         };
     }
