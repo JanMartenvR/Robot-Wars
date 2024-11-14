@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class AskRobotNameView {
     public static String display() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Bitte wählen Sie Ihren Roboter aus:");
+        System.out.println("Bitte wählen Sie ein Zeichen für Ihren Roboter aus:");
         System.out.println("Geben Sie 1 ein für X");
         System.out.println("Geben Sie 2 ein für #");
         System.out.println("Geben Sie 3 ein für $");
