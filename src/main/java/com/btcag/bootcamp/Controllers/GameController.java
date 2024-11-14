@@ -18,10 +18,10 @@ public class GameController {
         IntroScreenView.display();
         Battlefield battlefield = new Battlefield(15, 10);
         String robotname = (AskRobotNameView.display());
-
         Robot spieler = new Robot(robotname, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, false);
         Robot gegner = new Robot("[Z]", 1, 9, 9, 7, 1, 1, 1, 1, 1, 1, false);
         AskSkillPointView.setStats(spieler);
+        AskSkillPointView.display(spieler);
         List<Robot> robots = new ArrayList<>();
         robots.add(spieler);
         robots.add(gegner);
