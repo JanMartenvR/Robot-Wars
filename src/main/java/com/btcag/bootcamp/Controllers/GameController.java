@@ -10,11 +10,16 @@ import com.btcag.bootcamp.Views.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.btcag.bootcamp.Service.ConnectorDB.dbConnector.connect;
+import static com.btcag.bootcamp.Service.ConnectorDB.dbConnector.createTable;
+
 
 // Board kann aus Feldern bestehen mit eigenschaften, und koordinaten
 
 public class GameController {
     public static void main(String[] args) {
+        connect();
+        createTable();
         IntroScreenView.display();
         Battlefield battlefield = new Battlefield(15, 10);
         String robotname = (AskRobotNameView.display());
