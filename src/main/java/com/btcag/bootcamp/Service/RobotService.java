@@ -47,4 +47,19 @@ public class RobotService implements IRobotService {
     public String mapshow() {
         return "";
     }
+
+    @Override
+    public int[] robotList() {
+        return new int[0];
+    }
+
+    @Override
+    public int robotID() {
+        return 0;
+    }
+
+    @Override
+    public Robot createRobot() {
+        return null;
+    }
 }

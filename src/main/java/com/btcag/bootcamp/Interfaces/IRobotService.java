@@ -1,6 +1,9 @@
 package com.btcag.bootcamp.Interfaces;
 
-public interface IRobotService {
-    String mapshow();
+import com.btcag.bootcamp.Models.Robot;
 
+public interface IRobotService {
+    int[] robotList();
+    int robotID();
+    Robot createRobot();
 }
