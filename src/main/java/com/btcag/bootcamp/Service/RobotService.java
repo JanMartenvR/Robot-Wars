@@ -1,9 +1,10 @@
 package com.btcag.bootcamp.Service;
 
 import com.btcag.bootcamp.Enums.Directions;
+import com.btcag.bootcamp.Interfaces.IRobotService;
 import com.btcag.bootcamp.Models.Robot;
 
-public class RobotService {
+public class RobotService implements IRobotService {
     public static Enum<Directions> fromUserInput(int userChoice){
         return switch (userChoice) {
             case 8 -> Directions.NORD;
@@ -42,4 +43,8 @@ public class RobotService {
         return false;
     }
 
+    @Override
+    public String mapshow() {
+        return "";
+    }
 }
