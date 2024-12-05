@@ -1,13 +1,13 @@
 package com.btcag.bootcamp.Service;
 
+import com.btcag.bootcamp.Entities.Map;
 import com.btcag.bootcamp.Interfaces.IMapService;
-import com.btcag.bootcamp.Models.Battlefield;
+
 
 public class MapService implements IMapService {
 
     @Override
-    public Battlefield gameMap(int gameId) {
-        Battlefield Battlefield = null;
-        return Battlefield;
+    public Map gameMap(int gameId) {
+        return null;
     }
 }

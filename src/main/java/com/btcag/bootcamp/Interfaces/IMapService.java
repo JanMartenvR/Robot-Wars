@@ -1,7 +1,7 @@
 package com.btcag.bootcamp.Interfaces;
 
-import com.btcag.bootcamp.Models.Battlefield;
+import com.btcag.bootcamp.Entities.Map;
 
 public interface IMapService {
-    Battlefield gameMap(int gameId);
+    Map gameMap(int gameId);
 }
