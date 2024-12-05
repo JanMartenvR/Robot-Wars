@@ -35,9 +35,5 @@ public class ConnectorDB {
             }
         }
 
-        public static void main(String[] args) {
-            connect();
-            createTable();
-        }
     }
 }

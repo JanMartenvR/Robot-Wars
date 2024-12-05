@@ -18,8 +18,8 @@ import static com.btcag.bootcamp.Service.ConnectorDB.dbConnector.createTable;
 
 public class GameController {
     public static void main(String[] args) {
-        connect();
-        createTable();
+        //connect();
+        //createTable();
         IntroScreenView.display();
         Battlefield battlefield = new Battlefield(15, 10);
         String robotname = (AskRobotNameView.display());

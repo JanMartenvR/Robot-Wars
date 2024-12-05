@@ -6,7 +6,9 @@ import com.btcag.bootcamp.Interfaces.IGameService;
 public class GameService implements IGameService {
 
     @Override
-    public Game getGame() {
-        return new Game();
+    public Game getGame(int gameId) {
+        //get the game objekt from database with the ID gameId
+        Game game = new Game();
+        return game;
     }
 }

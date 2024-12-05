@@ -19,9 +19,24 @@ public class Game {
     @Column(name = "moves")
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Move> moves = new ArrayList<>();
+    @Column(name="robots")
+    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Robot> robots = new ArrayList<>();
 
     public Long getId() {
         return id;
+    }
+
+    public List<Robot> getRobots() {
+        return robots;
+    }
+
+    public void setRobots(List<Robot> robots) {
+        this.robots = robots;
+    }
+
+    public void setMoves(List<Move> moves) {
+        this.moves = moves;
     }
 
     public void setId(Long id) {
