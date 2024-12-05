@@ -43,14 +43,10 @@ public class RobotService implements IRobotService {
         return false;
     }
 
-    @Override
-    public String mapshow() {
-        return "";
-    }
 
     @Override
-    public int[] robotList() {
-        return new int[0];
+    public Robot[] robotList() {
+        return new Robot[0];
     }
 
     @Override
@@ -59,7 +55,8 @@ public class RobotService implements IRobotService {
     }
 
     @Override
-    public Robot createRobot() {
-        return null;
+    public void createRobot(String name, int health, int damage, int range, int movementRate) {
+
     }
+
 }

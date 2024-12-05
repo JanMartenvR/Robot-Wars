@@ -3,7 +3,7 @@ package com.btcag.bootcamp.Interfaces;
 import com.btcag.bootcamp.Models.Robot;
 
 public interface IRobotService {
-    int[] robotList();
+    Robot[] robotList();
     int robotID();
-    Robot createRobot();
+    void createRobot(String name, int health, int damage, int range, int movementRate);
 }

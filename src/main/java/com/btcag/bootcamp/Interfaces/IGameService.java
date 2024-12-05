@@ -1,6 +1,8 @@
 package com.btcag.bootcamp.Interfaces;
 
+import com.btcag.bootcamp.Entities.Game;
+
 public interface IGameService {
-    int getGame();
+    Game getGame();
 
 }
