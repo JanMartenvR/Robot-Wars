@@ -3,6 +3,7 @@ package com.btcag.bootcamp.Service;
 import com.btcag.bootcamp.Enums.Directions;
 import com.btcag.bootcamp.Interfaces.IRobotService;
 import com.btcag.bootcamp.Models.Robot;
+import com.btcag.bootcamp.Entities.Robot;
 
 public class RobotService implements IRobotService {
     public static Enum<Directions> fromUserInput(int userChoice){
@@ -46,17 +47,18 @@ public class RobotService implements IRobotService {
 
     @Override
     public Robot[] robotList() {
+        //Muss man nicht wenigstens die SpielId mitgeben?
         return new Robot[0];
     }
 
     @Override
-    public int robotID() {
-        return 0;
+    public Robot robotID(int robotId) {
+        return new Robot();
     }
 
     @Override
-    public void createRobot(String name, int health, int damage, int range, int movementRate) {
-
+    public Robot createRobot(String name, int health, int damage, int range, int movementRate) {
+        return new Robot();
     }
 
 }

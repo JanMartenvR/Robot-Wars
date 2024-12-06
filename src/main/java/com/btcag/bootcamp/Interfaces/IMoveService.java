@@ -1,7 +1,11 @@
 package com.btcag.bootcamp.Interfaces;
 
+import com.btcag.bootcamp.Entities.Move;
+
+import java.util.List;
+
 public interface IMoveService {
-    String[] moveList(int gameId);
-    String[] moveListAfter(int gameId, int moveId);
+    List<Move> moveList(int gameId);
+    List<Move> moveListAfter(int gameId, int moveId);
     String postMove(int gameId);
 }

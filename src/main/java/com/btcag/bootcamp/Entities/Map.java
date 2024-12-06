@@ -23,6 +23,7 @@ public class Map {
     @OneToMany(mappedBy = "map", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Game> games = new ArrayList<>();
 
+
     public Long getId() {
         return id;
     }

@@ -1,9 +1,9 @@
 package com.btcag.bootcamp.Interfaces;
 
-import com.btcag.bootcamp.Models.Robot;
+import com.btcag.bootcamp.Entities.Robot;
 
 public interface IRobotService {
     Robot[] robotList();
-    int robotID();
-    void createRobot(String name, int health, int damage, int range, int movementRate);
+    Robot robotID(int robotId);
+    Robot createRobot(String name, int health, int damage, int range, int movementRate);
 }

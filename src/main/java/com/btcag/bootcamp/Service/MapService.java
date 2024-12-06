@@ -22,11 +22,10 @@ public class MapService implements IMapService {
         try (Connection conn = connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
+
             while (rs.next()) {
-                Map map = new Map(int rs.getInt("gameId",));
-                System.out.println("ID: " + rs.getInt("id") + "\t" +
-                        "Username: " + rs.getString("username") + "\t" +
-                        "Password: " + rs.getString("password"));
+                Map map = new Map(rs.getInt("gameId"),rs.getArray(Robot[]));
+
             }
         } catch (SQLException e) {
             System.out.println("Fehler beim Abrufen des Games.");
