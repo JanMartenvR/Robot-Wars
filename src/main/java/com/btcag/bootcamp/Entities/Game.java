@@ -22,6 +22,9 @@ public class Game {
     @Column(name="robots")
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Robot> robots = new ArrayList<>();
+    public Game() {
+
+    }
 
     public Long getId() {
         return id;

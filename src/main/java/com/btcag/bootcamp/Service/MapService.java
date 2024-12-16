@@ -16,6 +16,7 @@ public class MapService implements IMapService {
 
     @Override
     public Map gameMap(int gameId) {
+        // Erst Verbindung mit DB? Dann gucken ob so ein Spiel existiert, wenn ja die Map Selecten und returnen? Wie benutzt man Jsons dafür?
         //get map des Spiels mit der GameId
         //SELECT mapID FROM game WHERE GameId == gameId
         String sql = "SELECT mapID FROM game WHERE GameId == "+ gameId +";";
